@@ -6,6 +6,9 @@ mmseg.dict_load_defaults()
 
 
 def seg_txt(text):
+    if type(text) is str:
+        text = text.encode('utf-8')
+    assert type(text) is bytes, "invalid type of text %s" % str(type(text))      
     if type(text) is bytes:
         algor = mmseg.Algorithm(text)
         for tok in algor:
